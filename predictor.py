@@ -1,3 +1,4 @@
+import os
 import numpy    as np
 from data       import DVCAT_MAP
 
@@ -8,6 +9,15 @@ AMARELO  = '\033[1;93m'
 CIANO    = '\033[1;96m'
 CINZA    = '\033[1;90m'
 RESET    = '\033[m'
+
+if os.name == 'nt':  # desativa as cores no Windows
+    '''
+    quando fui testar o projeto em uma VM do Windows
+    ele não estáva conseguindo mostrar as cores no Terminal
+    exibindo o código delas ao invez de mudar a cor
+    então optei para desligar as cores no Windows
+    '''
+    VERDE = VERMELHO = AMARELO = CIANO = CINZA = RESET = ''
 
 SEP  = f'{CIANO} {"=-"*26}{RESET}'  #separador padrao
 DVCAT_REVERSO = {v: k for k, v in DVCAT_MAP.items()}
